@@ -1,0 +1,45 @@
+#! /c/Source/iverilog-install/bin/vvp
+:ivl_version "12.0 (devel)" "(s20150603-1539-g2693dd32b)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "C:\iverilog\lib\ivl\system.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_sys.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_textio.vpi";
+:vpi_module "C:\iverilog\lib\ivl\v2005_math.vpi";
+:vpi_module "C:\iverilog\lib\ivl\va_math.vpi";
+S_0000020497c55ec0 .scope module, "tb" "tb" 2 1;
+ .timescale 0 0;
+v0000020497c56280_0 .var "A", 31 0;
+v00000204979bee60_0 .var "B", 31 0;
+v00000204979bef00_0 .net "C", 31 0, L_00000204979bbab0;  1 drivers
+S_0000020497c56050 .scope module, "dut" "parameterized" 2 6, 3 1 0, S_0000020497c55ec0;
+ .timescale 0 0;
+    .port_info 0 /INPUT 32 "A";
+    .port_info 1 /INPUT 32 "B";
+    .port_info 2 /OUTPUT 32 "C";
+P_00000204979bc4f0 .param/l "WIDTH" 0 3 1, +C4<00000000000000000000000000100000>;
+v00000204979be600_0 .net "A", 31 0, v0000020497c56280_0;  1 drivers
+v00000204979b6980_0 .net "B", 31 0, v00000204979bee60_0;  1 drivers
+v0000020497c561e0_0 .net "C", 31 0, L_00000204979bbab0;  alias, 1 drivers
+L_00000204979bbab0 .arith/sum 32, v0000020497c56280_0, v00000204979bee60_0;
+    .scope S_0000020497c55ec0;
+T_0 ;
+    %pushi/vec4 1, 0, 32;
+    %assign/vec4 v0000020497c56280_0, 0;
+    %pushi/vec4 2, 0, 32;
+    %assign/vec4 v00000204979bee60_0, 0;
+    %delay 100, 0;
+    %end;
+    .thread T_0;
+    .scope S_0000020497c55ec0;
+T_1 ;
+    %vpi_call 2 19 "$dumpfile", "dump.vcd" {0 0 0};
+    %vpi_call 2 20 "$dumpvars", 32'sb00000000000000000000000000000000 {0 0 0};
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "testbench.v";
+    "design.v";
